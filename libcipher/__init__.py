@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 import importlib
 
 def encrypt(string: str, type: str, offset = 0):

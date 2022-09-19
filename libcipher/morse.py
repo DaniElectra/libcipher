@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 import collections
 
 MorseDictionaryLetters = collections.OrderedDict({ 'A':'.-', 'B':'-...',
@@ -36,8 +37,8 @@ def encrypt_morse(string: str, offset: int):
                 # If the character isn't a letter, go to the normal dictionary
                 cipher += MorseDictionary[letter] + ' '
         else:
-            # 1 space means a different character
-            # 2 spaces indicates a different word
+            # A space means a different character
+            # A slash indicates a different word
             cipher += '/ '
     return cipher
 
