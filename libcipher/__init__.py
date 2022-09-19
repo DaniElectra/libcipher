@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2022 DaniElectra
+#
 # SPDX-License-Identifier: Apache-2.0
 import importlib
 
@@ -14,3 +16,4 @@ def decrypt(string: str, type: str, offset = 0):
     decrypt_dynamic = getattr(module, 'decrypt_' + type)
     decipher = decrypt_dynamic(string, offset)
     return decipher
+    

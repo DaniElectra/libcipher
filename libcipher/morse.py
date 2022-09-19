@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2022 DaniElectra
+#
 # SPDX-License-Identifier: Apache-2.0
 import collections
 
@@ -80,3 +82,4 @@ def decrypt_morse(string: str, offset: int):
             ciphered_text += letter
 
     return decipher
+    
