@@ -2,8 +2,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-import collections
-
 UppercaseList = [ 'A', 'B', 'C',
                   'D', 'E', 'F',
                   'G', 'H', 'I',
