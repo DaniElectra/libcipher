@@ -108,3 +108,9 @@ def decrypt(string: str, type: str, offset = 0) -> str:
         decipher = letter_arrangement(decipher, offset, undo = True)
 
     return decipher
+
+def recrypt(input: str, input_type: str, output_type: str, input_offset = 0, output_offset = 0) -> str:
+    '''Recrypt a given encoded string into other encoding, using given offsets'''
+    decrypted = decrypt(input, input_type, input_offset)
+    recrypted = encrypt(decrypted, output_type, output_offset)
+    return recrypted
