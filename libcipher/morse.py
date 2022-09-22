@@ -25,14 +25,14 @@ MorseDictionary = { '0':'-----', '1':'.----', '2':'..---',
                     '_':'..--.-', '"':'.-..-.', '$':'...-..-',
                     '@':'.--.-.' }
 
-def encrypt_morse(string: str, offset: int) -> str:
+def encrypt_morse(string: str) -> str:
     '''Encrypt a string using Morse code, and return the encoded string'''
     cipher = ''
     for letter in string:
         if letter != ' ':
             try:
                 # Check the letter at the dictionary and add the correct sequence to the cipher
-                letter_number = list(MorseDictionaryLetters.keys()).index(letter.upper()) + offset
+                letter_number = list(MorseDictionaryLetters.keys()).index(letter.upper())
                 
                 # If letter offset bypasses the dictionary length, count from the start
                 if letter_number >= len(MorseDictionaryLetters):
@@ -49,7 +49,7 @@ def encrypt_morse(string: str, offset: int) -> str:
             cipher += '/ '
     return cipher
 
-def decrypt_morse(string: str, offset: int) -> str:
+def decrypt_morse(string: str) -> str:
     '''Decrypt a string using Morse code, and return the decoded string'''
     # Add an ending space to detect the last character
     string += ' '
@@ -74,11 +74,7 @@ def decrypt_morse(string: str, offset: int) -> str:
 
             # Decode character using inverse dictionary
             try:
-                letter_number = list(InverseMorseDictionaryLetters.keys()).index(ciphered_text) - offset
-                
-                # If letter offset returns a value lower than 0, count backwards from the end
-                if letter_number < 0:
-                    letter_number += len(InverseMorseDictionaryLetters)
+                letter_number = list(InverseMorseDictionaryLetters.keys()).index(ciphered_text)
 
                 new_letter = list(InverseMorseDictionaryLetters)[letter_number]
                 decipher += InverseMorseDictionaryLetters[new_letter]
