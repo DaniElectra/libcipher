@@ -15,7 +15,7 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
                       'S', 'T', 'U',
                       'V', 'W', 'X',
                       'Y', 'Z' ]
-
+                      
     LowercaseList = [ 'a', 'b', 'c',
                       'd', 'e', 'f',
                       'g', 'h', 'i',
@@ -88,7 +88,11 @@ def encrypt(string: str, type: str, offset = 0) -> str:
     module = importlib.import_module('libcipher.' + type)
     encrypt_dynamic = getattr(module, 'encrypt_' + type)
     
-    cipher = encrypt_dynamic(string, offset)
+    # Check if offset isn't zero. In that case, do letter arrangement
+    if offset != 0:
+        string = letter_arrangement(string, offset, undo = False)    
+
+    cipher = encrypt_dynamic(string)
     return cipher
 
 def decrypt(string: str, type: str, offset = 0) -> str:
@@ -97,5 +101,10 @@ def decrypt(string: str, type: str, offset = 0) -> str:
     module = importlib.import_module('libcipher.' + type)
     decrypt_dynamic = getattr(module, 'decrypt_' + type)
     
-    decipher = decrypt_dynamic(string, offset)
+    decipher = decrypt_dynamic(string)
+
+    # Check if offset isn't zero. In that case, do letter arrangement
+    if offset != 0:
+        decipher = letter_arrangement(decipher, offset, undo = True)
+
     return decipher
