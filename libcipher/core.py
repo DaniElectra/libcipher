@@ -107,7 +107,7 @@ def decrypt(string: str, type: str, offset = 0) -> str:
     '''Decrypt a given string using the specified type and offset'''
     # Check if module exists in modules list
     if type in modules_list:
-        decrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
+        decrypt_dynamic = getattr(sys.modules[__name__], 'decrypt_' + type)
     else:
         raise NotImplemented
     
