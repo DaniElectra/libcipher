@@ -124,3 +124,7 @@ def recrypt(input: str, input_type: str, output_type: str, input_offset = 0, out
     decrypted = decrypt(input, input_type, input_offset)
     recrypted = encrypt(decrypted, output_type, output_offset)
     return recrypted
+
+def list_types() -> set:
+    '''List all available encryption types for use with this library'''
+    return modules_list
