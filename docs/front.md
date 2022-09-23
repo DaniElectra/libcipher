@@ -12,19 +12,19 @@ The **libcipher** library has the following functions:
 This function returns a `set` with all the available encodings for use with the library.  
 
 ## libcipher.encrypt()  
-This command encrypts a given string with the selected encoding. It has the following parameters:  
+This function encrypts a given string with the selected encoding. It has the following parameters:  
 - `string`: The string to encode.  
 - `type`: The encryption to use for encoding the string.  
 - `offset` *(Optional)*: The letter shift to apply (positive numbers move the shift right).
 
 ## libcipher.decrypt()  
-This command encrypts a given string with the selected encoding. It has the following parameters:  
+This function encrypts a given string with the selected encoding. It has the following parameters:  
 - `string`: The encrypted string.  
 - `type`: The encryption to use for decoding the string.  
 - `offset` *(Optional)*: The letter shift to apply (positive numbers move the shift left).
 
 ## libcipher.recrypt()  
-This command decrypts a given string to recrypt it again with another encoding. It has the following parameters:  
+This function decrypts a given string to recrypt it again with another encoding. It has the following parameters:  
 - `string`: The string to recode in a different encoding.  
 - `input_type`: The encryption to use for decoding the encrypted string.  
 - `output_type`: The encryption to use for encoding the string.  
