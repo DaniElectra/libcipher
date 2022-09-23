@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: 2022 DaniElectra
 SPDX-License-Identifier: Apache-2.0
 -->
 
-[![License](https://img.shields.io/github/license/DaniElectra/libcipher)](https://img.shields.io/github/license/DaniElectra/libcipher) [![REUSE status](https://api.reuse.software/badge/github.com/DaniElectra/libcipher)](https://api.reuse.software/info/github.com/DaniElectra/libcipher)
+![GitHub](https://img.shields.io/github/license/DaniElectra/libcipher?style=for-the-badge) ![REUSE Compliance](https://img.shields.io/reuse/compliance/github.com/DaniElectra/libcipher?style=for-the-badge)
 
 # libcipher  
 **libcipher** is a basic Python library for converting text into different encryption types.  
