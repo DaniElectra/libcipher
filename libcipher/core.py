@@ -2,7 +2,13 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-import importlib
+import sys
+from .binary import *
+from .hexadecimal import *
+from .morse import *
+from .normal import *
+
+modules_list = {'morse', 'normal', 'binary', 'hexadecimal'}
 
 def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) -> str:
     '''Apply letter arrangement to string based on offset'''
@@ -84,9 +90,11 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
 
 def encrypt(string: str, type: str, offset = 0) -> str:
     '''Encrypt a given string using the specified type and offset'''
-    # Select module dynamically based on type
-    module = importlib.import_module('libcipher.' + type)
-    encrypt_dynamic = getattr(module, 'encrypt_' + type)
+    # Check if module exists in modules list
+    if type in modules_list:
+        encrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
+    else:
+        raise NotImplemented
     
     # Check if offset isn't zero. In that case, do letter arrangement
     if offset != 0:
@@ -97,9 +105,11 @@ def encrypt(string: str, type: str, offset = 0) -> str:
 
 def decrypt(string: str, type: str, offset = 0) -> str:
     '''Decrypt a given string using the specified type and offset'''
-    # Select module dynamically based on type
-    module = importlib.import_module('libcipher.' + type)
-    decrypt_dynamic = getattr(module, 'decrypt_' + type)
+    # Check if module exists in modules list
+    if type in modules_list:
+        encrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
+    else:
+        raise NotImplemented
     
     decipher = decrypt_dynamic(string)
 
