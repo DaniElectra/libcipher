@@ -8,7 +8,7 @@ from .hexadecimal import *
 from .morse import *
 from .normal import *
 
-modules_list = {'morse', 'normal', 'binary', 'hexadecimal'}
+modules_list = {'binary', 'hexadecimal', 'morse', 'normal'}
 
 def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) -> str:
     '''Apply letter arrangement to string based on offset'''
@@ -107,7 +107,7 @@ def decrypt(string: str, type: str, offset = 0) -> str:
     '''Decrypt a given string using the specified type and offset'''
     # Check if module exists in modules list
     if type in modules_list:
-        encrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
+        decrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
     else:
         raise NotImplemented
     
