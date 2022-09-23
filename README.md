@@ -20,5 +20,11 @@ The currently supported encodings are:
 - Morse code (`morse`)  
 - Letter shift (`normal`)  
 
+## Documentation  
+You can check out the documentation for this library [here](docs/README.md).  
+
+## Contributing  
+If you want to contribute to this project, see [CONTRIBUTING.md](CONTRIBUTING.md).  
+
 ## License  
 This project is licensed under the [Apache-2.0](LICENSE) license, and it is compliant with the [REUSE](https://reuse.software) Specification.
