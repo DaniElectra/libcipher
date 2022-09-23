@@ -21,4 +21,6 @@ def encrypt_example(string: str) -> str:
     return cipher
 ```  
 
-Before the encoding can work with the library, it has to be imported in `core.py` and added to the `modules_list` set.
+Before the encoding can work with the library, it has to be imported in `core.py` and added to the `modules_list` set.  
+
+Check out the `example.py` file for a basic encoding implementation.  
