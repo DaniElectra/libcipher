@@ -15,6 +15,7 @@ This library requires Python 3.5 or newer, and it doesn't require any external l
 ## Supported encryption types  
 The currently supported encodings are:  
 
+- Base64 (`base64`)  
 - Binary (`binary`)  
 - Hexadecimal (`hexadecimal`)  
 - Morse code (`morse`)  
