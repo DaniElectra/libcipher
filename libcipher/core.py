@@ -3,12 +3,13 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import sys
+from .base64 import *
 from .binary import *
 from .hexadecimal import *
 from .morse import *
 from .normal import *
 
-modules_list = {'binary', 'hexadecimal', 'morse', 'normal'}
+modules_list = {'base64', 'binary', 'hexadecimal', 'morse', 'normal'}
 
 def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) -> str:
     '''Apply letter arrangement to string based on offset'''
