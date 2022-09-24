@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-from .core import encrypt, decrypt, recrypt, list_types
+from .core import Advanced, encrypt, decrypt, recrypt, list_types
