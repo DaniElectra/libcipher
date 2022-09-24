@@ -11,27 +11,27 @@ from .normal import *
 
 modules_list = {'base64', 'binary', 'hexadecimal', 'morse', 'normal'}
 
-def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) -> str:
+def letter_arrangement(string: str, offset: int, undo: bool, numbers = bool) -> str:
     '''Apply letter arrangement to string based on offset'''
     UppercaseList = [ 'A', 'B', 'C',
-                      'D', 'E', 'F',
-                      'G', 'H', 'I',
-                      'J', 'K', 'L',
-                      'M', 'N', 'O',
-                      'P', 'Q', 'R',
-                      'S', 'T', 'U',
-                      'V', 'W', 'X',
-                      'Y', 'Z' ]
-                      
+                    'D', 'E', 'F',
+                    'G', 'H', 'I',
+                    'J', 'K', 'L',
+                    'M', 'N', 'O',
+                    'P', 'Q', 'R',
+                    'S', 'T', 'U',
+                    'V', 'W', 'X',
+                    'Y', 'Z' ]
+                    
     LowercaseList = [ 'a', 'b', 'c',
-                      'd', 'e', 'f',
-                      'g', 'h', 'i',
-                      'j', 'k', 'l',
-                      'm', 'n', 'o',
-                      'p', 'q', 'r',
-                      's', 't', 'u',
-                      'v', 'w', 'x',
-                      'y', 'z' ]
+                    'd', 'e', 'f',
+                    'g', 'h', 'i',
+                    'j', 'k', 'l',
+                    'm', 'n', 'o',
+                    'p', 'q', 'r',
+                    's', 't', 'u',
+                    'v', 'w', 'x',
+                    'y', 'z' ]
     
     new_string = ''
     for letter in string:
@@ -89,23 +89,59 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
         new_string += letter
     return new_string
 
-def encrypt(string: str, type: str, offset = 0) -> str:
-    '''Encrypt a given string using the specified type and offset'''
+class Advanced:
+    '''Advanced functions for the library, like letter shift'''
+    def encrypt(string: str, type: str, offset = 0, numbers = False) -> str:
+        '''Encrypt a given string using the specified type and offset'''
+        # Check if module exists in modules list
+        if type in modules_list:
+            encrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
+        else:
+            raise NotImplemented
+        
+        # Check if offset isn't zero. In that case, do letter arrangement
+        if offset != 0:
+            string = letter_arrangement(string, offset, False, numbers)    
+
+        cipher = encrypt_dynamic(string)
+        return cipher
+
+    def decrypt(string: str, type: str, offset = 0, numbers = False) -> str:
+        '''Decrypt a given string using the specified type and offset'''
+        # Check if module exists in modules list
+        if type in modules_list:
+            decrypt_dynamic = getattr(sys.modules[__name__], 'decrypt_' + type)
+        else:
+            raise NotImplemented
+        
+        decipher = decrypt_dynamic(string)
+
+        # Check if offset isn't zero. In that case, do letter arrangement
+        if offset != 0:
+            decipher = letter_arrangement(decipher, offset, True, numbers)
+
+        return decipher
+
+    def recrypt(input: str, input_type: str, output_type: str, input_offset = 0, \
+                output_offset = 0, input_numbers = False, output_numbers = False) -> str:
+        '''Recrypt a given encoded string into other encoding, using given offsets'''
+        decrypted = Advanced.decrypt(input, input_type, input_offset, input_numbers)
+        recrypted = Advanced.encrypt(decrypted, output_type, output_offset, output_numbers)
+        return recrypted
+
+def encrypt(string: str, type: str) -> str:
+    '''Encrypt a given string using the specified type'''
     # Check if module exists in modules list
     if type in modules_list:
         encrypt_dynamic = getattr(sys.modules[__name__], 'encrypt_' + type)
     else:
-        raise NotImplemented
-    
-    # Check if offset isn't zero. In that case, do letter arrangement
-    if offset != 0:
-        string = letter_arrangement(string, offset, undo = False)    
+        raise NotImplemented   
 
     cipher = encrypt_dynamic(string)
     return cipher
 
-def decrypt(string: str, type: str, offset = 0) -> str:
-    '''Decrypt a given string using the specified type and offset'''
+def decrypt(string: str, type: str) -> str:
+    '''Decrypt a given string using the specified type'''
     # Check if module exists in modules list
     if type in modules_list:
         decrypt_dynamic = getattr(sys.modules[__name__], 'decrypt_' + type)
@@ -114,16 +150,12 @@ def decrypt(string: str, type: str, offset = 0) -> str:
     
     decipher = decrypt_dynamic(string)
 
-    # Check if offset isn't zero. In that case, do letter arrangement
-    if offset != 0:
-        decipher = letter_arrangement(decipher, offset, undo = True)
-
     return decipher
 
-def recrypt(input: str, input_type: str, output_type: str, input_offset = 0, output_offset = 0) -> str:
-    '''Recrypt a given encoded string into other encoding, using given offsets'''
-    decrypted = decrypt(input, input_type, input_offset)
-    recrypted = encrypt(decrypted, output_type, output_offset)
+def recrypt(input: str, input_type: str, output_type: str) -> str:
+    '''Recrypt a given encoded string into other encoding'''
+    decrypted = decrypt(input, input_type)
+    recrypted = encrypt(decrypted, output_type)
     return recrypted
 
 def list_types() -> set:
