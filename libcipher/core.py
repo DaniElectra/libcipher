@@ -43,10 +43,10 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
                 letter_number = UppercaseList.index(letter) + offset
             
             # Check if letter offset bypasses list limits
-            if letter_number >= len(UppercaseList):
+            while letter_number >= len(UppercaseList):
                 letter_number -= len(UppercaseList)
             
-            if letter_number < 0:
+            while letter_number < 0:
                 letter_number += len(UppercaseList)
 
             new_string += UppercaseList[letter_number]
@@ -59,10 +59,10 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
                 letter_number = LowercaseList.index(letter) + offset
             
             # Check if letter offset bypasses list limits
-            if letter_number >= len(LowercaseList):
+            while letter_number >= len(LowercaseList):
                 letter_number -= len(LowercaseList)
             
-            if letter_number < 0:
+            while letter_number < 0:
                 letter_number += len(LowercaseList)
 
             new_string += LowercaseList[letter_number]
@@ -76,10 +76,10 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers = False) ->
                 new_number = int(letter) - offset
 
             # Make number only one digit
-            if new_number >= 10:
+            while new_number >= 10:
                 new_number -= 10
 
-            if new_number < 0:
+            while new_number < 0:
                 new_number += 10
             
             new_string += str(new_number)
