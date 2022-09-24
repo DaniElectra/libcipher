@@ -14,24 +14,24 @@ modules_list = {'base64', 'binary', 'hexadecimal', 'morse', 'normal'}
 def letter_arrangement(string: str, offset: int, undo: bool, numbers = bool) -> str:
     '''Apply letter arrangement to string based on offset'''
     UppercaseList = [ 'A', 'B', 'C',
-                    'D', 'E', 'F',
-                    'G', 'H', 'I',
-                    'J', 'K', 'L',
-                    'M', 'N', 'O',
-                    'P', 'Q', 'R',
-                    'S', 'T', 'U',
-                    'V', 'W', 'X',
-                    'Y', 'Z' ]
+                      'D', 'E', 'F',
+                      'G', 'H', 'I',
+                      'J', 'K', 'L',
+                      'M', 'N', 'O',
+                      'P', 'Q', 'R',
+                      'S', 'T', 'U',
+                      'V', 'W', 'X',
+                      'Y', 'Z' ]
                     
     LowercaseList = [ 'a', 'b', 'c',
-                    'd', 'e', 'f',
-                    'g', 'h', 'i',
-                    'j', 'k', 'l',
-                    'm', 'n', 'o',
-                    'p', 'q', 'r',
-                    's', 't', 'u',
-                    'v', 'w', 'x',
-                    'y', 'z' ]
+                      'd', 'e', 'f',
+                      'g', 'h', 'i',
+                      'j', 'k', 'l',
+                      'm', 'n', 'o',
+                      'p', 'q', 'r',
+                      's', 't', 'u',
+                      'v', 'w', 'x',
+                      'y', 'z' ]
     
     new_string = ''
     for letter in string:
@@ -122,7 +122,7 @@ class Advanced:
 
         return decipher
 
-    def recrypt(input: str, input_type: str, output_type: str, input_offset = 0, \
+    def recrypt(input: str, input_type: str, output_type: str, input_offset = 0,
                 output_offset = 0, input_numbers = False, output_numbers = False) -> str:
         '''Recrypt a given encoded string into other encoding, using given offsets'''
         decrypted = Advanced.decrypt(input, input_type, input_offset, input_numbers)
