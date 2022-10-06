@@ -13,6 +13,13 @@ SPDX-License-Identifier: Apache-2.0
 ## Requirements  
 This library requires Python 3.5 or newer, and it doesn't require any external libraries to work.  
 
+## Building  
+To build the library, you will need a version of the `setuptools` library which can build from `pyproject.toml` files.  
+After that, simply run the following command:  
+```
+python3 -m build
+```  
+
 ## Supported encryption types  
 The currently supported encodings are:  
 
