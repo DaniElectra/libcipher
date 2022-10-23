@@ -113,7 +113,11 @@ def letter_arrangement(string: str, offset: int, undo: bool, numbers: bool, key:
 
 class Advanced:
     '''Advanced functions for the library, like letter shift and keys'''
-    def encrypt(string: str, type: str, offset = 0, numbers = False, key = "") -> str:
+    def encrypt(string: str,
+                type: str,
+                offset: int = 0,
+                numbers: bool = False,
+                key: str = "") -> str:
         '''Encrypt a given string using the specified type, offset and key'''
         # Check if module exists in modules list
         if type in modules_list:
@@ -128,7 +132,11 @@ class Advanced:
         cipher = encrypt_dynamic(string)
         return cipher
 
-    def decrypt(string: str, type: str, offset = 0, numbers = False, key = "") -> str:
+    def decrypt(string: str,
+                type: str,
+                offset: int = 0,
+                numbers: bool = False,
+                key: str = "") -> str:
         '''Decrypt a given string using the specified type, offset and key'''
         # Check if module exists in modules list
         if type in modules_list:
@@ -147,12 +155,12 @@ class Advanced:
     def recrypt(input: str,
                 input_type: str,
                 output_type: str,
-                input_offset = 0,
-                output_offset = 0,
-                input_numbers = False,
-                output_numbers = False,
-                input_key = "",
-                output_key = "") -> str:
+                input_offset: int = 0,
+                output_offset: int = 0,
+                input_numbers: bool = False,
+                output_numbers: bool = False,
+                input_key: str = "",
+                output_key: str = "") -> str:
         '''Recrypt a given encoded string into other encoding, using given offsets and keys'''
         decrypted = Advanced.decrypt(input, input_type, input_offset, input_numbers, input_key)
         recrypted = Advanced.encrypt(decrypted, output_type, output_offset, output_numbers, output_key)
