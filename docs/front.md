@@ -40,7 +40,7 @@ This function encrypts a given string with the selected and offset. It has the f
 - `type`: The encryption to use for encoding the string.  
 - `offset` *(Optional)*: The letter shift to apply (positive numbers move the shift right). Default: `0`  
 - `numbers` *(Optional)*: A boolean to check whether to apply letter shift to numbers. Default: `False`  
-- `key` *(Optional)*: Encrypt the text using a key (Vignère cipher). It is combined with the given offset. Default: `""`  
+- `key` *(Optional)*: Encrypt the text using a key (Vigenère cipher). It is combined with the given offset. Default: `""`  
 
 ### libcipher.Advanced.decrypt()  
 This function encrypts a given string with the selected encoding and offset. It has the following parameters:  
@@ -48,7 +48,7 @@ This function encrypts a given string with the selected encoding and offset. It 
 - `type`: The encryption to use for decoding the string.  
 - `offset` *(Optional)*: The letter shift to apply (positive numbers move the shift left). Default: `0`  
 - `numbers` *(Optional)*: A boolean to check whether to apply letter shift to numbers. Default: `False`  
-- `key` *(Optional)*: Decrypt the text using a key (Vignère cipher). It is combined with the given offset. Default: `""`  
+- `key` *(Optional)*: Decrypt the text using a key (Vigenère cipher). It is combined with the given offset. Default: `""`  
 
 ### libcipher.Advanced.recrypt()  
 This function decrypts a given string to recrypt it again with another encoding. It has the following parameters:  
@@ -59,5 +59,5 @@ This function decrypts a given string to recrypt it again with another encoding.
 - `output_offset` *(Optional)*: The letter shift to apply when encrypting to a new encoding (positive numbers move the shift right). Default: `0`  
 - `input_numbers` *(Optional)*: A boolean to check whether to apply letter shift to numbers when decrypting. Default: `False`  
 - `output_numbers` *(Optional)*: A boolean to check whether to apply letter shift to numbers when encrypting. Default: `False`  
-- `input_key` *(Optional)*: Decrypt the input using a key (Vignère cipher). It is combined with the given offset. Default: `""`  
-- `output_key` *(Optional)*: Encrypt the output using a key (Vignère cipher). It is combined with the given offset. Default: `""`  
+- `input_key` *(Optional)*: Decrypt the input using a key (Vigenère cipher). It is combined with the given offset. Default: `""`  
+- `output_key` *(Optional)*: Encrypt the output using a key (Vigenère cipher). It is combined with the given offset. Default: `""`  
